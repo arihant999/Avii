@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NAKODA BHAIRAV - AVII</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+    }
+    .header {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: white;
+    }
+    .menu-item:hover { color: #00f0ff; }
+    .profile {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .banner {
+      display: flex;
+      overflow: hidden;
+      height: 200px;
+    }
+    .banner-img {
+      width: 100%;
+      display: none;
+      object-fit: cover;
+    }
+    .banner-img.active {
+      display: block;
+    }
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+      justify-content: center;
+    }
+    .section {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .section-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .section-btn {
+      background: #00f0ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background: #181818;
+    }
+    .stat-block h3 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #00f0ff;
+    }
+    .footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      background: #111;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="menu-item" onclick="window.open('https://t.me/MockManager', '_blank')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48...Z"/>
+      </svg>
+      <span>Join</span>
+    </div>
+    <img src="https://studyuk.fun/img/sdv.jpg" alt="Profile" class="profile" onclick="window.open('https://t.me/+rc5Psv_S2VJkMGM1', '_blank')">
+  </div>
+
+  <div class="banner">
+    <img src="https://studyuk.fun/img/um.jpg" class="banner-img active">
+    <img src="https://studyuk.fun/img/rwa.jpg" class="banner-img">
+    <img src="https://studyuk.fun/img/tg.jpg" class="banner-img">
+  </div>
+
+  <div class="sections">
+    <div class="section" onclick="window.open('https://studyuk.fun/offline', '_blank')">
+      <img src="https://studyuk.fun/img/um.jpg" class="section-img">
+      <h3>Offline Batches</h3>
+      <button class="section-btn">Explore</button>
+    </div>
+    <div class="section" onclick="window.open('https://studyuk.fun/goal', '_blank')">
+      <img src="https://studyuk.fun/img/um.jpg" class="section-img">
+      <h3>Courses</h3>
+      <button class="section-btn">Explore</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-block"><h3>200+</h3><p>Offline Batch</p></div>
+    <div class="stat-block"><h3>3000+</h3><p>Courses</p></div>
+    <div class="stat-block"><h3>700+</h3><p>Students</p></div>
+  </div>
+
+  <div class="footer">
+    © 2025 AVII. All rights reserved. Contact: <a href="https://t.me/MockManager" style="color:#00f0ff;">@MockManager</a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const banners = document.querySelectorAll('.banner-img');
+    let current = 0;
+    setInterval(() => {
+      banners[current].classList.remove('active');
+      current = (current + 1) % banners.length;
+      banners[current].classList.add('active');
+    }, 3000);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>
+    eruda.init({ 
+      defaults: { 
+        displaySize: 50 
+      }, 
+      tool: ['console', 'elements'], 
+      container: document.body 
+    });
+    eruda._key = "57c770427689482ff6a4c7af785a2e2a";
+  </script>
+
+  <script>
+    setTimeout(() => {
+      location.reload();
+    }, 60000); // auto-refresh every 60 sec
+  </script>
+
+</body>
+</html>

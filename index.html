@@ -36,18 +36,18 @@
   </div>
 
   <div class="banner">
-    <img src="https://studyuk.fun/img/um.jpg" class="banner-img active">
-    <img src="https://studyuk.fun/img/tg.jpg" class="banner-img">
+    <img src="https://aviiproxy.arihantofficial999.workers.dev/img/um.jpg" class="banner-img active">
+    <img src="https://aviiproxy.arihantofficial999.workers.dev/img/tg.jpg" class="banner-img">
   </div>
 
   <div class="sections">
-    <div class="section" onclick="window.open('https://studyuk.fun/offline','_blank')">
-      <img src="https://studyuk.fun/img/um.jpg" class="section-img">
+    <div class="section" onclick="window.open('https://aviiproxy.arihantofficial999.workers.dev/offline','_blank')">
+      <img src="https://aviiproxy.arihantofficial999.workers.dev/img/um.jpg" class="section-img">
       <h3>Offline Batches</h3>
       <button class="section-btn">Explore</button>
     </div>
-    <div class="section" onclick="window.open('https://studyuk.fun/goal','_blank')">
-      <img src="https://studyuk.fun/img/um.jpg" class="section-img">
+    <div class="section" onclick="window.open('https://aviiproxy.arihantofficial999.workers.dev/goal','_blank')">
+      <img src="https://aviiproxy.arihantofficial999.workers.dev/img/um.jpg" class="section-img">
       <h3>Courses</h3>
       <button class="section-btn">Explore</button>
     </div>
@@ -73,19 +73,6 @@
 
     // Auto refresh every 60s
     setTimeout(() => location.reload(), 60000);
-
-    // Proxy video/pdf link redirector
-    document.addEventListener('click', function(e) {
-      const el = e.target.closest('a, button');
-      if (!el) return;
-      const href = el.href || el.getAttribute('onclick') || '';
-      if (href.includes('/video') || href.includes('/lecture') || href.includes('.pdf')) {
-        e.preventDefault();
-        const playurl = encodeURIComponent(href);
-        const redirectUrl = "https://aviiproxy.arihantofficial999.workers.dev/umplayer.html?playurl=" + playurl;
-        window.open(redirectUrl, "_blank");
-      }
-    });
   </script>
 
   <!-- Eruda Mobile Debugger -->

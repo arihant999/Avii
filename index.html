@@ -20,12 +20,46 @@
     .stat-block { text-align:center; }
     .stat-block h3 { margin:0; font-size:2em; color:#00f0ff; }
     .footer { text-align:center; padding:15px; background:#222; font-size:14px; color:#aaa; }
+
+    /* Floating images */
+    .floating-logo {
+      position:absolute;
+      top:20px;
+      left:20px;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      overflow:hidden;
+      z-index:10;
+      box-shadow:0 0 10px rgba(0,0,0,0.5);
+    }
+    .floating-logo img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .floating-tg {
+      position:absolute;
+      bottom:20px;
+      right:20px;
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      overflow:hidden;
+      cursor:pointer;
+      z-index:10;
+      box-shadow:0 0 10px rgba(0,0,0,0.5);
+    }
+    .floating-tg img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
   </style>
 </head>
 <body>
-
   <div class="header">
-    <div class="menu-item" onclick="window.open('https://t.me/AVIIXSMW','_blank')">
+    <div class="menu-item" onclick="window.open('https://t.me/+rc5Psv_S2VJkMGM1','_blank')">
       <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 ..."/></svg>
       <span>Join Channel</span>
     </div>
@@ -36,10 +70,18 @@
   </div>
 
   <div class="banner">
-    <!-- Slide 1: Sidhu wala logo -->
-    <img src="https://github.com/arihant999/Avii/blob/e9a4b57814dd1fcc9106935f8278e1ece40ae358/Picsart_25-08-08_10-14-22-807.jpg" class="banner-img active">
-    <!-- Slide 2: Telegram join image -->
-    <img src="https://github.com/arihant999/Avii/blob/e9a4b57814dd1fcc9106935f8278e1ece40ae358/IMG_20250815_161118.jpg" class="banner-img" onclick="window.open('https://t.me/AVIIXSMW','_blank')">
+    <!-- Floating logo -->
+    <div class="floating-logo">
+      <img src="https://raw.githubusercontent.com/arihant999/Avii/main/Picsart_25-08-08_10-14-22-807.jpg" alt="Logo">
+    </div>
+
+    <!-- Floating Telegram icon -->
+    <div class="floating-tg" onclick="window.open('https://t.me/AVIIXSMW','_blank')">
+      <img src="https://raw.githubusercontent.com/arihant999/Avii/main/IMG_20250815_161118.jpg" alt="Telegram">
+    </div>
+
+    <img src="https://studyuk.fun/img/um.jpg" class="banner-img active">
+    <img src="https://studyuk.fun/img/tg.jpg" class="banner-img">
   </div>
 
   <div class="sections">
@@ -72,9 +114,9 @@
       idx = (idx+1)%banners.length;
       banners[idx].classList.add('active');
     },3000);
+
     // Auto refresh every 60s
     setTimeout(()=>location.reload(),60000);
   </script>
-
 </body>
 </html>

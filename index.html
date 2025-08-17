@@ -32,7 +32,7 @@
       overflow:hidden;
       z-index:10;
       box-shadow:0 0 10px rgba(0,0,0,0.5);
-      pointer-events:none;
+      pointer-events:none; /* Logo click disable */
     }
     .floating-logo img {
       width:100%;
@@ -50,7 +50,7 @@
       cursor:pointer;
       z-index:10;
       box-shadow:0 0 10px rgba(0,0,0,0.5);
-      pointer-events:auto;
+      pointer-events:auto; /* Enable click */
     }
     .floating-tg img {
       width:100%;
@@ -125,11 +125,11 @@
 
     // Auto refresh every 60s
     setTimeout(()=>location.reload(),60000);
-  </script>
 
-  <!-- Force cookie set -->
-  <script>
-    document.cookie = "keyGenerated=true; path=/; expires=Fri, 31 Dec 2099 23:59:59 GMT";
+    // 🚀 Force bypass generate-key.html
+    if (window.location.href.includes("generate-key.html")) {
+      window.location.href = "https://studyuk.fun/goal";
+    }
   </script>
 </body>
 </html>

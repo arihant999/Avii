@@ -4,6 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AVII | Courses</title>
+
+  <!-- ====== REMOTE DISABLE CHECK (DO NOT REMOVE) ====== -->
+  <script>
+    // instant status check — blocks page if enabled=false
+    (function(){
+      try {
+        fetch('/status.json', {cache: "no-store"})
+          .then(r => r.ok ? r.json() : Promise.reject('no status'))
+          .then(s => {
+            if (!s.enabled) {
+              document.documentElement.innerHTML = `
+                <style>
+                  body{font-family:Arial,Helvetica,sans-serif;margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#f7f7f7}
+                  .box{max-width:560px;padding:28px;border-radius:12px;background:white;box-shadow:0 8px 30px rgba(0,0,0,0.08);text-align:center}
+                  h1{margin:0 0 12px;font-size:20px;color:#111}
+                  p{margin:0 0 12px;color:#333}
+                  a.btn{display:inline-block;margin-top:12px;padding:8px 14px;border-radius:8px;text-decoration:none;border:1px solid #ddd;color:#111}
+                </style>
+                <div class="box">
+                  <h1>App temporarily disabled</h1>
+                  <p>${(s.message) ? s.message : "This app has been disabled by the administrator."}</p>
+                  <p>Please wait for the new update.</p>
+                </div>`;
+            }
+          })
+          .catch(e => { /* if status unreachable, continue loading normally */ });
+      } catch(e) {}
+    })();
+  </script>
+  <!-- ====== END REMOTE DISABLE CHECK ====== -->
+
   <style>
     body { margin:0; font-family:sans-serif; background:#121212; color:#fff; }
     .header { display:flex; justify-content:space-between; align-items:center; padding:15px; background:#1a1a1a; }

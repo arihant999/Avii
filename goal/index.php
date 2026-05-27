@@ -10,14 +10,19 @@
 
 <style>
 
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:'Poppins',sans-serif;
     background:#011425;
     color:white;
 }
 
-/* BANNER */
+/* TOP BANNER */
 
 .banner{
     width:100%;
@@ -120,8 +125,9 @@ body{
 
 <div class="cards">
 
-    <div class="card"
-         onclick="window.open('/offline','_blank')">
+    <!-- OFFLINE -->
+
+    <div class="card">
 
         <img src="https://sdvbots.site/img/um.jpg">
 
@@ -133,7 +139,7 @@ body{
                 Join offline classroom batches.
             </p>
 
-            <button>
+            <button onclick="window.location.href='https://sdvbots.site/offline'">
                 Explore
             </button>
 
@@ -141,8 +147,9 @@ body{
 
     </div>
 
-    <div class="card"
-         onclick="window.open('/goal','_blank')">
+    <!-- COURSES -->
+
+    <div class="card">
 
         <img src="https://sdvbots.site/img/um.jpg">
 
@@ -154,7 +161,7 @@ body{
                 Browse thousands of courses.
             </p>
 
-            <button>
+            <button onclick="window.location.href='https://sdvbots.site/goal'">
                 Explore
             </button>
 

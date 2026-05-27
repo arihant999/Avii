@@ -7,6 +7,7 @@
 
   <!-- ====== REMOTE DISABLE CHECK (DO NOT REMOVE) ====== -->
   <script>
+    // instant status check — blocks page if enabled=false
     (function(){
       try {
         fetch('/status.json', {cache: "no-store"})
@@ -15,152 +16,43 @@
             if (!s.enabled) {
               document.documentElement.innerHTML = `
                 <style>
-                  body{
-                    font-family:Arial,Helvetica,sans-serif;
-                    margin:0;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    height:100vh;
-                    background:#f7f7f7
-                  }
-                  .box{
-                    max-width:560px;
-                    padding:28px;
-                    border-radius:12px;
-                    background:white;
-                    box-shadow:0 8px 30px rgba(0,0,0,0.08);
-                    text-align:center
-                  }
-                  h1{
-                    margin:0 0 12px;
-                    font-size:20px;
-                    color:#111
-                  }
-                  p{
-                    margin:0 0 12px;
-                    color:#333
-                  }
+                  body{font-family:Arial,Helvetica,sans-serif;margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#f7f7f7}
+                  .box{max-width:560px;padding:28px;border-radius:12px;background:white;box-shadow:0 8px 30px rgba(0,0,0,0.08);text-align:center}
+                  h1{margin:0 0 12px;font-size:20px;color:#111}
+                  p{margin:0 0 12px;color:#333}
+                  a.btn{display:inline-block;margin-top:12px;padding:8px 14px;border-radius:8px;text-decoration:none;border:1px solid #ddd;color:#111}
                 </style>
-
                 <div class="box">
                   <h1>App temporarily disabled</h1>
                   <p>${(s.message) ? s.message : "This app has been disabled by the administrator."}</p>
                   <p>Please wait for the new update.</p>
-                </div>
-              `;
+                </div>`;
             }
           })
-          .catch(e => {});
+          .catch(e => { /* if status unreachable, continue loading normally */ });
       } catch(e) {}
     })();
   </script>
+  <!-- ====== END REMOTE DISABLE CHECK ====== -->
 
   <style>
-    body {
-      margin:0;
-      font-family:sans-serif;
-      background:#121212;
-      color:#fff;
-    }
+    body { margin:0; font-family:sans-serif; background:#121212; color:#fff; }
+    .header { display:flex; justify-content:space-between; align-items:center; padding:15px; background:#1a1a1a; }
+    .menu-item { display:flex; align-items:center; cursor:pointer; }
+    .menu-item span { margin-left:8px; }
+    .banner { position:relative; height:200px; overflow:hidden; cursor:pointer; }
+    .banner-img { position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s; }
+    .banner-img.active { opacity:1; }
+    .sections { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
+    .section { width:250px; background:#1e1e1e; border-radius:10px; overflow:hidden; cursor:pointer; }
+    .section-img { width:100%; height:150px; object-fit:cover; }
+    .section-btn { display:block; margin:10px auto; padding:8px 16px; background:#00f0ff; border:none; border-radius:5px; cursor:pointer; color:#000; }
+    .stats { display:flex; justify-content:center; gap:30px; padding:20px; background:#1a1a1a; }
+    .stat-block { text-align:center; }
+    .stat-block h3 { margin:0; font-size:2em; color:#00f0ff; }
+    .footer { text-align:center; padding:15px; background:#222; font-size:14px; color:#aaa; }
 
-    .header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:15px;
-      background:#1a1a1a;
-    }
-
-    .menu-item {
-      display:flex;
-      align-items:center;
-      cursor:pointer;
-    }
-
-    .menu-item span {
-      margin-left:8px;
-    }
-
-    .banner {
-      position:relative;
-      height:200px;
-      overflow:hidden;
-      cursor:pointer;
-    }
-
-    .banner-img {
-      position:absolute;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:0;
-      transition:opacity 1s;
-    }
-
-    .banner-img.active {
-      opacity:1;
-    }
-
-    .sections {
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:20px;
-      padding:20px;
-    }
-
-    .section {
-      width:250px;
-      background:#1e1e1e;
-      border-radius:10px;
-      overflow:hidden;
-      cursor:pointer;
-    }
-
-    .section-img {
-      width:100%;
-      height:150px;
-      object-fit:cover;
-    }
-
-    .section-btn {
-      display:block;
-      margin:10px auto;
-      padding:8px 16px;
-      background:#00f0ff;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;
-      color:#000;
-    }
-
-    .stats {
-      display:flex;
-      justify-content:center;
-      gap:30px;
-      padding:20px;
-      background:#1a1a1a;
-    }
-
-    .stat-block {
-      text-align:center;
-    }
-
-    .stat-block h3 {
-      margin:0;
-      font-size:2em;
-      color:#00f0ff;
-    }
-
-    .footer {
-      text-align:center;
-      padding:15px;
-      background:#222;
-      font-size:14px;
-      color:#aaa;
-    }
-
+    /* Floating images */
     .floating-logo {
       position:absolute;
       top:20px;
@@ -171,15 +63,13 @@
       overflow:hidden;
       z-index:10;
       box-shadow:0 0 10px rgba(0,0,0,0.5);
-      pointer-events:none;
+      pointer-events:none; /* Logo click disable */
     }
-
     .floating-logo img {
       width:100%;
       height:100%;
       object-fit:cover;
     }
-
     .floating-tg {
       position:absolute;
       bottom:20px;
@@ -191,9 +81,8 @@
       cursor:pointer;
       z-index:10;
       box-shadow:0 0 10px rgba(0,0,0,0.5);
-      pointer-events:auto;
+      pointer-events:auto; /* Enable click */
     }
-
     .floating-tg img {
       width:100%;
       height:100%;
@@ -201,123 +90,72 @@
     }
   </style>
 </head>
-
 <body>
-
   <div class="header">
     <div class="menu-item" onclick="window.open('https://t.me/+rc5Psv_S2VJkMGM1','_blank')">
+      <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 ..."/></svg>
       <span>Join Channel</span>
     </div>
-
     <div class="menu-item" onclick="window.open('https://t.me/MockManager','_blank')">
+      <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 ..."/></svg>
       <span>Contact Admin</span>
     </div>
   </div>
 
   <div class="banner" id="bannerArea">
-
+    <!-- Floating logo -->
     <div class="floating-logo">
-      <img src="https://raw.githubusercontent.com/arihant999/Avii/main/Picsart_25-08-08_10-14-22-807.jpg">
+      <img src="https://raw.githubusercontent.com/arihant999/Avii/main/Picsart_25-08-08_10-14-22-807.jpg" alt="Logo">
     </div>
 
+    <!-- Floating Telegram icon -->
     <div class="floating-tg" onclick="window.open('https://t.me/AVIIXSMW','_blank')">
-      <img src="https://raw.githubusercontent.com/arihant999/Avii/main/IMG_20250815_161118.jpg">
+      <img src="https://raw.githubusercontent.com/arihant999/Avii/main/IMG_20250815_161118.jpg" alt="Telegram">
     </div>
 
+    <!-- Banner images -->
     <img src="https://raw.githubusercontent.com/arihant999/Avii/main/Picsart_25-08-08_10-14-22-807.jpg" class="banner-img active">
-
     <img src="https://raw.githubusercontent.com/arihant999/Avii/main/IMG_20250815_161118.jpg" class="banner-img">
   </div>
 
   <div class="sections">
-
     <div class="section" onclick="window.open('https://sdvbots.site/offline','_blank')">
       <img src="https://sdvbots.site/img/um.jpg" class="section-img">
       <h3>Offline Batches</h3>
       <button class="section-btn">Explore</button>
     </div>
-
     <div class="section" onclick="window.open('https://sdvbots.site/goal','_blank')">
       <img src="https://sdvbots.site/img/um.jpg" class="section-img">
       <h3>Courses</h3>
       <button class="section-btn">Explore</button>
     </div>
-
   </div>
 
   <div class="stats">
-    <div class="stat-block">
-      <h3>200+</h3>
-      <p>Offline Batches</p>
-    </div>
-
-    <div class="stat-block">
-      <h3>3000+</h3>
-      <p>Courses</p>
-    </div>
-
-    <div class="stat-block">
-      <h3>700+</h3>
-      <p>Students</p>
-    </div>
+    <div class="stat-block"><h3>200+</h3><p>Offline Batches</p></div>
+    <div class="stat-block"><h3>3000+</h3><p>Courses</p></div>
+    <div class="stat-block"><h3>700+</h3><p>Students</p></div>
   </div>
 
-  <div class="footer">
-    © 2025 AVII.
-    Contact:
-    <a href="https://t.me/MockManager" style="color:#00f0ff;">
-      @MockManager
-    </a>
-  </div>
+  <div class="footer">© 2025 AVII. Contact: <a href="https://t.me/MockManager" style="color:#00f0ff;">@MockManager</a></div>
 
   <script>
-
     // Banner slider
     const banners = document.querySelectorAll('.banner-img');
-
-    let idx = 0;
-
-    setInterval(() => {
+    let idx=0;
+    setInterval(()=>{
       banners[idx].classList.remove('active');
-
-      idx = (idx + 1) % banners.length;
-
+      idx = (idx+1)%banners.length;
       banners[idx].classList.add('active');
-    }, 3000);
+    },3000);
 
-    // Banner clickable
+    // Banner clickable (redirect to TG)
     document.getElementById('bannerArea').addEventListener('click', () => {
       window.open('https://t.me/AVIIXSMW','_blank');
     });
 
-    // Auto refresh
-    setTimeout(() => location.reload(), 60000);
-
+    // Auto refresh every 60s
+    setTimeout(()=>location.reload(),60000);
   </script>
-
-  <!-- GOAL PAGE HEADER REMOVE -->
-  <script>
-
-    window.addEventListener("load", function () {
-
-      if (window.location.href.includes("/goal")) {
-
-        // Remove Study UK header
-        const header = document.querySelector("header");
-
-        if (header) {
-          header.remove();
-        }
-
-        // Remove spacing
-        document.body.style.marginTop = "0";
-        document.body.style.paddingTop = "0";
-
-      }
-
-    });
-
-  </script>
-
 </body>
 </html>

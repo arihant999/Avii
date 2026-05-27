@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Courses</title>
+<title>AVII Courses</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -20,9 +20,22 @@ body{
     font-family:'Poppins',sans-serif;
     background:#011425;
     color:white;
+    overflow-x:hidden;
 }
 
-/* TOP BANNER */
+/* BACKGROUND */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left, rgba(31,73,89,.35), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(92,124,137,.25), transparent 40%);
+    z-index:-1;
+}
+
+/* BANNER */
 
 .banner{
     width:100%;
@@ -36,19 +49,40 @@ body{
     object-fit:cover;
 }
 
-/* CARDS */
+/* SECTION */
 
-.cards{
+.section{
     padding:20px;
+}
+
+.section-title{
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#7ab8cb;
+    margin-bottom:15px;
+}
+
+/* GRID */
+
+.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:20px;
 }
 
+/* CARD */
+
 .card{
     background:#1F4959;
-    border-radius:14px;
+    border-radius:16px;
     overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
 }
 
 .card img{
@@ -62,52 +96,75 @@ body{
 }
 
 .card h3{
-    margin:0;
     font-size:18px;
+    margin-bottom:8px;
 }
 
 .card p{
     font-size:13px;
     opacity:.7;
-    margin:10px 0;
+    line-height:1.5;
+    margin-bottom:15px;
 }
 
 .card button{
     width:100%;
-    padding:10px;
     border:none;
-    border-radius:8px;
     background:white;
     color:black;
-    font-weight:bold;
+    padding:11px;
+    border-radius:10px;
+    font-weight:700;
     cursor:pointer;
 }
 
 /* STATS */
 
 .stats{
-    display:flex;
-    justify-content:center;
-    gap:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
     padding:20px;
 }
 
 .stat{
     background:#1F4959;
-    padding:15px;
-    border-radius:10px;
+    border-radius:14px;
+    padding:20px;
     text-align:center;
-    min-width:90px;
 }
 
 .stat h2{
-    margin:0;
     color:#7ab8cb;
+    margin-bottom:5px;
 }
 
 .stat p{
-    margin:5px 0 0;
-    font-size:12px;
+    font-size:13px;
+    opacity:.7;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    opacity:.6;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.stats{
+    grid-template-columns:1fr;
+}
+
+.banner{
+    height:150px;
+}
+
 }
 
 </style>
@@ -115,55 +172,63 @@ body{
 
 <body>
 
-<!-- BANNER -->
+<!-- TOP BANNER -->
 
 <div class="banner">
     <img src="https://sdvbots.site/img/um.jpg">
 </div>
 
-<!-- CARDS -->
+<!-- COURSES -->
 
-<div class="cards">
+<div class="section">
 
-    <!-- OFFLINE -->
+    <div class="section-title">
+        Explore
+    </div>
 
-    <div class="card">
+    <div class="grid">
 
-        <img src="https://sdvbots.site/img/um.jpg">
+        <!-- OFFLINE -->
 
-        <div class="card-body">
+        <div class="card">
 
-            <h3>Offline Batches</h3>
+            <img src="https://sdvbots.site/img/um.jpg">
 
-            <p>
-                Join offline classroom batches.
-            </p>
+            <div class="card-body">
 
-            <button onclick="window.location.href='https://sdvbots.site/offline'">
-                Explore
-            </button>
+                <h3>Offline Batches</h3>
+
+                <p>
+                    Join offline classroom batches with expert teachers.
+                </p>
+
+                <button onclick="window.location.href='https://sdvbots.site/offline'">
+                    Explore
+                </button>
+
+            </div>
 
         </div>
 
-    </div>
+        <!-- COURSES -->
 
-    <!-- COURSES -->
+        <div class="card">
 
-    <div class="card">
+            <img src="https://sdvbots.site/img/um.jpg">
 
-        <img src="https://sdvbots.site/img/um.jpg">
+            <div class="card-body">
 
-        <div class="card-body">
+                <h3>Teachers Courses</h3>
 
-            <h3>Teachers Courses</h3>
+                <p>
+                    Browse premium teacher courses anytime anywhere.
+                </p>
 
-            <p>
-                Browse thousands of courses.
-            </p>
+                <button onclick="window.location.href='https://sdvbots.site/goal2'">
+                    Explore
+                </button>
 
-            <button onclick="window.location.href='https://sdvbots.site/goal'">
-                Explore
-            </button>
+            </div>
 
         </div>
 
@@ -177,7 +242,7 @@ body{
 
     <div class="stat">
         <h2>1000+</h2>
-        <p>Batches</p>
+        <p>Offline Batches</p>
     </div>
 
     <div class="stat">
@@ -190,6 +255,12 @@ body{
         <p>Students</p>
     </div>
 
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    © 2025 AVII
 </div>
 
 </body>
